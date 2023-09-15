@@ -37,7 +37,7 @@ $(function () {
       "5"
     ],
     trackNames = [
-      "Roman Minerals - How Dare You",
+      "Roman Minerals",
       "2",
       "3",
       "4",

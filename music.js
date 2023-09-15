@@ -30,11 +30,11 @@ $(function () {
     buffInterval = null,
     tFlag = false,
     albums = [
-      "Dawn",
-      "Me & You",
-      "Electro Boy",
-      "Home",
-      "Proxy (Original Mix)"
+      "How Dare You",
+      "2",
+      "3",
+      "4",
+      "5"
     ],
     trackNames = [
       "Roman Minerals - How Dare You",

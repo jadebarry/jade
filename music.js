@@ -37,19 +37,19 @@ $(function () {
       "Proxy (Original Mix)"
     ],
     trackNames = [
-      "Skylike - Dawn",
-      "Alex Skrindo - Me & You",
-      "Kaaze - Electro Boy",
-      "Jordan Schor - Home",
-      "Martin Garrix - Proxy"
+      "Roman Minerals - How Dare You",
+      "2",
+      "3",
+      "4",
+      "5"
     ],
     albumArtworks = ["_1", "_2", "_3", "_4", "_5"],
     trackUrl = [
       "https://raw.githubusercontent.com/jakebarry/jade/main/howdareyou230902.mp3",
-      "https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/1.mp3",
-      "https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/3.mp3",
-      "https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/4.mp3",
-      "https://raw.githubusercontent.com/himalayasingh/music-player-1/master/music/5.mp3"
+      "2.mp3",
+      "3.mp3",
+      "4.mp3",
+      "5.mp3"
     ],
     playPreviousTrackButton = $("#play-previous"),
     playNextTrackButton = $("#play-next"),

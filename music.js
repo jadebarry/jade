@@ -30,23 +30,23 @@ $(function () {
     buffInterval = null,
     tFlag = false,
     albums = [
+      "Business",
       "How Dare You",
-      "2",
       "3",
       "4",
       "5"
     ],
     trackNames = [
       "Roman Minerals",
-      "2",
+      "Roman Minerals",
       "3",
       "4",
       "5"
     ],
     albumArtworks = ["_1", "_2", "_3", "_4", "_5"],
     trackUrl = [
-      "https://raw.githubusercontent.com/jakebarry/jade/main/howdareyou230902.mp3",
-      "2.mp3",
+      "/music/business230924.mp3",
+      "/music/howdareyou230902.mp3",
       "3.mp3",
       "4.mp3",
       "5.mp3"

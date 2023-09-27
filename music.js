@@ -31,25 +31,25 @@ $(function () {
     tFlag = false,
     albums = [
       "Business",
-      "How Dare You",
-      "3",
-      "4",
-      "5"
+      "How Dare You"
+      //"3",
+      //"4",
+      //"5"
     ],
     trackNames = [
       "Roman Minerals",
-      "Roman Minerals",
-      "3",
-      "4",
-      "5"
+      "Roman Minerals"
+      //"3",
+      //"4",
+      //"5"
     ],
-    albumArtworks = ["_1", "_2", "_3", "_4", "_5"],
+    albumArtworks = ["_1", "_2"],//, "_3", "_4", "_5"],
     trackUrl = [
       "/music/business230924.mp3",
-      "/music/howdareyou230902.mp3",
-      "3.mp3",
-      "4.mp3",
-      "5.mp3"
+      "/music/howdareyou230902.mp3"
+      //"3.mp3",
+      //"4.mp3",
+      //"5.mp3"
     ],
     playPreviousTrackButton = $("#play-previous"),
     playNextTrackButton = $("#play-next"),

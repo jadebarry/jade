@@ -45,8 +45,8 @@ $(function () {
     ],
     albumArtworks = ["_1", "_2"],//, "_3", "_4", "_5"],
     trackUrl = [
-      "/music/business230924.mp3",
-      "/music/howdareyou230902.mp3"
+      "./music/business230924.mp3",
+      "./music/howdareyou230902.mp3"
       //"3.mp3",
       //"4.mp3",
       //"5.mp3"

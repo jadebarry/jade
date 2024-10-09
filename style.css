@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap');
+
+@keyframes tooltip {
+  to {
+    opacity: .9;
+    transform: translate(-50%, -9px);
+  }
+}
+
+body, h1, h2, h3, p {
+  padding: 0;
+  margin: 0;
+  font-family: "Afacad Flux", sans-serif;
+  font-weight: 200;
+}
+
+p {
+  font-size: 1.6rem;
+}
+
+.wrapper {
+  .background {
+    position: fixed;
+    top: -20px;
+    left: -20px;
+    width: 110%;
+    height: 110%;
+    background: url(https://jadebarry.com/img/virtue.png);
+    /*background-size: cover;
+    background-position: center;
+    filter: blur(5px);*/
+    z-index: -2;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .25);
+    z-index: -1;
+  }
+}
+
+.content {
+  position: fixed;
+  font-size: 1.2em;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  width: 90%;
+
+  h1 {
+    line-height: 0.9;
+    margin-bottom: 0.1em;
+  }
+
+  a {
+    display: inline-block;
+    color: white;
+    font-size: 1.25em;
+    margin: 0.15em 0.25em 0 0;
+    padding: 0.25em;
+    transition: color 0.1s;
+    cursor: pointer;
+    transition: all 200ms;
+
+    &:first-of-type {
+      margin-left: -0.25em;
+    }
+
+    &:hover {
+      color: rgba(255, 255, 255, .9);
+      text-shadow: 1px 3px 3px rgba(53, 53, 53, .9);
+    }
+  }
+
+  @media(min-width: 500px) {
+    font-size: 1.5em;
+  }
+
+  @media(min-width: 768px) {
+    font-size: 2em;
+  }
+  
+  @media(min-width: 1280px) {
+    font-size: 2.5em;
+  }
+}
+
+@media(min-width: 768px) {
+  [tooltip] {
+    position: relative;
+
+    &:before, &:after {
+      position: absolute;
+      display: none;
+      opacity: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+      text-transform: none;
+      font-size: 0.35em;
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+      will-change: transform; 
+    }
+
+    &:before {
+      content: '';
+      top: calc(100% + 0.25em);
+      border: 5px solid transparent;
+      z-index: 1001;
+      border-top-width: 0;
+      border-bottom-color: white;
+    }
+
+    &:after {
+      content: attr(tooltip);
+      top: calc(100% +  0.5em);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: 0.55em 0.75em;
+      border-radius: 0.25em;
+      text-shadow: none;
+      box-shadow: 1px 3px 3px rgba(53, 53, 53, .9);
+      background: white;
+      color: black;
+      z-index: 1000;
+    }
+
+    &:hover:before,
+    &:hover:after {
+      display: block;
+      animation: tooltip 200ms ease-out forwards;
+    }
+  }
+}

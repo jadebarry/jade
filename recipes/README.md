@@ -1,6 +1,6 @@
 # 👨‍🍳 Recipes
 
-![Example](/.github/example.png)
+![Example](/recipes/.github/example.png)
 
 A list of personal recipes in markdown format and the source-code to render them
 on a website.

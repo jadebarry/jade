@@ -61,7 +61,7 @@ body, h1, h2, h3, p {
 .content {
     position: fixed;
     font-size: 1.2em;
-    top: 70%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;

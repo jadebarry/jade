@@ -23,6 +23,7 @@ body, h1, h2, h3, p {
     width: 110%;
     height: 110%;
     background: url(https://jadebarry.com/understory.jpg);
+    background-position: center;
     /*background-size: cover;
     background-position: center;
     filter: blur(5px);*/

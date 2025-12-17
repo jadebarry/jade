@@ -21,12 +21,18 @@ body {
   background-color: #486260;
 }
 
+.logo {
+  max-width: 40px;
+  display: block;
+  margin: auto;
+}
+
 .neon {
   color: #fff;
   text-shadow:
-    0 0 7px #fff,
-    0 0 10px #fff,
-    0 0 21px #fff,
+    0 0 7px #ccf,
+    0 0 10px #ccf,
+    0 0 21px #ccf,
     0 0 42px #486260,
     0 0 82px #486260,
     0 0 92px #486260,

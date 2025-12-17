@@ -29,7 +29,7 @@ body, h1, h2, h3, p {
     filter: blur(5px);*/
     z-index: -2;
     background-repeat: no-repeat;
-    background-position: right center;
+    background-position: center;
     background-size: cover;
     background-attachment: fixed;
   }

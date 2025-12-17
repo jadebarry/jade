@@ -114,6 +114,34 @@ body {
     }
   }
 
+.blur {
+  -webkit-mask: linear-gradient(#000, #000, transparent);
+          mask: linear-gradient(#000, #000, transparent);
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+  height: 40vh;
+  width: 100vw;
+  overflow: visible;
+  float: left;
+}
+.outlined {
+  height: 50vh;
+  width: 50vw;
+  position: fixed;
+  border-top: 0;
+  border-left: 0;
+  z-index: 2;
+}
+
+.blurred-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+
   @media(min-width: 500px) {
     font-size: 1.5em;
   }

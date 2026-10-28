@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
     <style>
         html, body {
-            background-color: #6c5ce7;
+            background-color: transparent;
         }
         
         body {
@@ -21,6 +21,7 @@
             margin: 0;
             padding: 0;
             overflow-x: hidden;
+            background-color: transparent;
         }
 
         /* Animated Gradient Background */
@@ -29,12 +30,12 @@
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             position: fixed;
-            top: -100px;
-            left: -100px;
-            right: -100px;
-            bottom: -100px;
-            z-index: -2;
-            opacity: 1;
+            top: -10vh;
+            left: -10vw;
+            width: 120vw;
+            height: 120vh;
+            z-index: -1;
+            opacity: 0.85;
         }
 
         .animated-bg-overlay {
@@ -104,11 +105,10 @@
 
     <!-- Background -->
     <div class="animated-bg"></div>
-    <div class="animated-bg-overlay"></div>
 
     <!-- Main Content -->
-    <main class="flex-grow px-4 sm:px-8 w-full max-w-6xl mx-auto flex flex-col space-y-12 relative z-10" style="padding-top: max(3rem, calc(env(safe-area-inset-top) + 1rem)); padding-bottom: max(4rem, calc(env(safe-area-inset-bottom) + 1rem));">
-           
+    <main class="flex-grow px-4 sm:px-8 w-full max-w-6xl mx-auto flex flex-col space-y-12 relative z-10" style="padding-top: calc(env(safe-area-inset-top) + 3rem); padding-bottom: max(4rem, calc(env(safe-area-inset-bottom) + 1rem));">
+        
         <!-- Logo & Name Header -->
         <div class="flex flex-col items-center justify-center space-y-4 mb-2">
             <img src="/favicon.svg" alt="Jade Barry Logo" class="h-16 w-16 sm:h-20 sm:w-20 object-contain drop-shadow-md">

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="theme-color" content="#6c5ce7">
     <title>jade barry</title>
@@ -11,13 +12,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
     <style>
+        html, body {
+            background-color: #6c5ce7;
+        }
+        
         body {
             font-family: 'League Spartan', sans-serif;
             margin: 0;
             padding: 0;
-            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
             overflow-x: hidden;
-            background-color: #0f0f11;
         }
 
         /* Animated Gradient Background */
@@ -95,7 +98,7 @@
     <div class="animated-bg"></div>
 
     <!-- Main Content -->
-    <main class="flex-grow pt-12 pb-16 px-4 sm:px-8 w-full max-w-6xl mx-auto flex flex-col space-y-12 relative z-10">
+    <main class="flex-grow pt-12 pb-16 px-4 sm:px-8 w-full max-w-6xl mx-auto flex flex-col space-y-12 relative z-10" style="padding-top: max(3rem, calc(env(safe-area-inset-top) + 1rem)); padding-bottom: max(4rem, calc(env(safe-area-inset-bottom) + 1rem));">
         
         <!-- Logo & Name Header -->
         <div class="flex flex-col items-center justify-center space-y-4 mb-2">

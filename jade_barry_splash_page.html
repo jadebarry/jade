@@ -29,12 +29,20 @@
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             position: fixed;
-            top: -50px;
-            bottom: -50px;
-            left: -50px;
-            right: -50px;
+            top: -100px;
+            left: -100px;
+            right: -100px;
+            bottom: -100px;
+            z-index: -2;
+            opacity: 1;
+        }
+
+        .animated-bg-overlay {
+            position: fixed;
+            inset: -100px;
+            background-color: #0f0f11;
+            opacity: 0.15;
             z-index: -1;
-            opacity: 0.85; /* Slightly darkened for better contrast with glass */
         }
 
         @keyframes gradientBG {
@@ -96,10 +104,11 @@
 
     <!-- Background -->
     <div class="animated-bg"></div>
+    <div class="animated-bg-overlay"></div>
 
     <!-- Main Content -->
-    <main class="flex-grow pt-12 pb-16 px-4 sm:px-8 w-full max-w-6xl mx-auto flex flex-col space-y-12 relative z-10" style="padding-top: max(3rem, calc(env(safe-area-inset-top) + 1rem)); padding-bottom: max(4rem, calc(env(safe-area-inset-bottom) + 1rem));">
-        
+    <main class="flex-grow px-4 sm:px-8 w-full max-w-6xl mx-auto flex flex-col space-y-12 relative z-10" style="padding-top: max(3rem, calc(env(safe-area-inset-top) + 1rem)); padding-bottom: max(4rem, calc(env(safe-area-inset-bottom) + 1rem));">
+           
         <!-- Logo & Name Header -->
         <div class="flex flex-col items-center justify-center space-y-4 mb-2">
             <img src="/favicon.svg" alt="Jade Barry Logo" class="h-16 w-16 sm:h-20 sm:w-20 object-contain drop-shadow-md">

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jade Barry | Creative Strategist</title>
+    <style>
+        /* Base Reset & Typography */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Hero Section (The Image Background) */
+        .hero-section {
+            height: 65vh;
+            background-image: url('understory-bg.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 1.5rem;
+            position: relative;
+        }
+
+        /* Optional overlay to ensure text is always readable regardless of image contrast */
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+            pointer-events: none;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            z-index: 1; /* Keeps text above the gradient overlay */
+            letter-spacing: -1px;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .flower-icon {
+            font-size: 2.5rem;
+        }
+
+        /* Content Section (The Animated Dark Green Gradient) */
+        .content-section {
+            min-height: 35vh;
+            padding: 4rem 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            /* Animated Gradient using the requested hex codes */
+            background: linear-gradient(-45deg, #001005, #00290C, #2C5848, #001005);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphism Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 3rem;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+        }
+
+        .glass-card h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .glass-card h2 em {
+            font-family: Georgia, serif;
+            font-style: italic;
+            font-weight: normal;
+        }
+
+        .glass-card p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        /* Glassmorphism Buttons */
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .glass-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .glass-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero-section {
+                height: 50vh; /* Shorter hero on mobile to reveal content sooner */
+            }
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .glass-card {
+                padding: 2rem;
+            }
+            .glass-card h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Section: Background Image & Name -->
+    <header class="hero-section">
+        <h1 class="hero-title"><span class="flower-icon">❀</span> Jade Barry</h1>
+    </header>
+
+    <!-- Bottom Section: Animated Gradient & Glass Cards -->
+    <main class="content-section">
+        <div class="glass-card">
+            <h2><em>Creative</em> Strategist & Employee Experience Leader</h2>
+            <p>Blending a theatrical edge with deep corporate enablement to build lasting connections and organizational maturity.</p>
+            
+            <div class="button-group">
+                <a href="#" class="glass-btn">Speaking</a>
+                <a href="#" class="glass-btn">Consulting</a>
+                <a href="https://linkedin.com/in/YOUR_LINKEDIN" class="glass-btn" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

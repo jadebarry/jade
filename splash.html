@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Libre Baskerville font -->
-    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Spectral:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Spectral:ital,wght@1,500&display=swap" rel="stylesheet">
     <style>
         html, body {
             background-color: transparent;
@@ -37,7 +37,7 @@
         .serif {
             font-family: 'Spectral', Georgia, serif;
             font-style: italic;
-            font-weight: 300;
+            font-weight: 500;
         }
 
         /* Fixed Hero Background */
@@ -356,7 +356,7 @@
                     if (progress > 1) progress = 1;
                     
                     // Drops the opacity down to 15% at max scroll, keeping a subtle texture
-                    const minOpacity = 0.15; 
+                    const minOpacity = 0.55; 
                     const currentOpacity = 1 - (progress * (1 - minOpacity));
                     
                     heroBg.style.opacity = currentOpacity;

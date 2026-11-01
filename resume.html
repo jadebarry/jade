@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#2C5848">
+  <meta name="description" content="Jade Barry — employee engagement, event design, change management, organizational communication, and data strategy.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>jade barry</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700;800&family=Spectral:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #2C5848;
+      --forest-deep: #071b12;
+      --forest-dark: #0d281c;
+      --mint: #a9d9c1;
+      --teal: #70d5be;
+      --lavender: #D6D6FF;
+      --white: #f7f8f5;
+      --muted: rgba(247, 248, 245, .72);
+      --line: rgba(255,255,255,.15);
+      --glass: rgba(255,255,255,.055);
+      --shadow: 0 18px 55px rgba(0,0,0,.18);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; background: var(--forest-deep); }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--white);
+      font-family: 'League Spartan', sans-serif;
+      background: var(--forest-deep);
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+    }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: 2px solid var(--teal);
+      outline-offset: 4px;
+    }
+
+    .ambient-bg {
+      position: fixed;
+      inset: -12vh -12vw;
+      z-index: -3;
+      background:
+        radial-gradient(ellipse at 20% 15%, rgba(56,126,93,.48), transparent 38%),
+        radial-gradient(ellipse at 82% 38%, rgba(26,91,73,.50), transparent 35%),
+        radial-gradient(ellipse at 54% 90%, rgba(11,57,37,.85), transparent 48%),
+        linear-gradient(135deg, #06180f 0%, #0d2b1d 38%, #214e3e 70%, #07180f 100%);
+      background-size: 140% 140%;
+      animation: atmosphere 22s ease-in-out infinite alternate;
+      will-change: background-position;
+    }
+    .ambient-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      opacity: .18;
+      background-image: radial-gradient(rgba(255,255,255,.42) .6px, transparent .6px);
+      background-size: 5px 5px;
+      mask-image: linear-gradient(to bottom, black, transparent 80%);
+    }
+    .ambient-shade {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: rgba(3,10,7,.28);
+      pointer-events: none;
+    }
+    @keyframes atmosphere {
+      0% { background-position: 0% 30%; }
+      100% { background-position: 100% 70%; }
+    }
+
+    .topbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      max-width: 1240px;
+      padding: 1.4rem 2rem;
+      margin: 0 auto;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      color: var(--lavender);
+      letter-spacing: .18em;
+      text-transform: lowercase;
+      font-size: 1.15rem;
+      white-space: nowrap;
+    }
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 1px solid rgba(214,214,255,.55);
+      border-radius: 14px;
+      color: var(--lavender);
+      font-family: 'Spectral', serif;
+      font-size: 1.15rem;
+      letter-spacing: -.06em;
+      background: rgba(255,255,255,.06);
+      box-shadow: 0 5px 22px rgba(0,0,0,.18);
+    }
+    .brand strong { font-weight: 800; }
+    .nav-links { display: flex; align-items: center; gap: 1.35rem; color: rgba(255,255,255,.75); font-size: .95rem; }
+    .nav-links a { transition: color .2s ease; }
+    .nav-links a:hover { color: var(--mint); }
+
+    .hero {
+      min-height: min(850px, 100svh);
+      min-height: max(690px, 100svh);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      position: relative;
+      padding: 8rem 1.5rem 5rem;
+      isolation: isolate;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      width: min(70vw, 760px);
+      aspect-ratio: 1;
+      right: -9vw;
+      top: 9vh;
+      border-radius: 50%;
+      border: 1px solid rgba(201,238,218,.11);
+      box-shadow: 0 0 0 38px rgba(201,238,218,.025), 0 0 0 90px rgba(201,238,218,.02), inset 0 0 100px rgba(154,219,184,.035);
+      transform: rotate(-18deg);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      width: min(44vw, 470px);
+      aspect-ratio: 1;
+      right: 7vw;
+      top: 20vh;
+      border-radius: 44% 56% 61% 39% / 44% 38% 62% 56%;
+      background: linear-gradient(145deg, rgba(155,220,185,.12), rgba(16,65,47,.02));
+      border: 1px solid rgba(255,255,255,.08);
+      filter: blur(.2px);
+      animation: drift 16s ease-in-out infinite alternate;
+    }
+    @keyframes drift {
+      from { transform: translate3d(0,0,0) rotate(0deg); border-radius: 44% 56% 61% 39% / 44% 38% 62% 56%; }
+      to { transform: translate3d(-18px,15px,0) rotate(12deg); border-radius: 58% 42% 42% 58% / 46% 58% 42% 54%; }
+    }
+    .hero-inner { width: 100%; max-width: 1120px; position: relative; z-index: 1; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: .65rem;
+      color: var(--mint);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ''; width: 2rem; height: 1px; background: var(--teal); }
+    .hero h1 {
+      max-width: 920px;
+      margin: 1.2rem 0 1.3rem;
+      font-size: clamp(3.15rem, 8vw, 6.9rem);
+      line-height: .98;
+      font-weight: 500;
+      letter-spacing: -.055em;
+      text-wrap: balance;
+      text-shadow: 0 8px 35px rgba(0,0,0,.2);
+    }
+    .serif { font-family: 'Spectral', Georgia, serif; font-style: italic; font-weight: 300; letter-spacing: -.025em; }
+    .hero h1 .serif { color: #e2e2ff; }
+    .hero-copy { max-width: 680px; margin: 0; color: rgba(255,255,255,.78); font-size: clamp(1.18rem, 2vw, 1.5rem); line-height: 1.45; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: .55rem 1.25rem; margin-top: 1.35rem; color: rgba(255,255,255,.66); font-size: .98rem; }
+    .hero-meta span + span::before { content: '•'; color: var(--teal); margin-right: 1.25rem; }
+    .actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 2rem; }
+    .link-btn {
+      position: relative;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 48px;
+      padding: .85rem 1.3rem;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 14px;
+      background: rgba(255,255,255,.065);
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: 700;
+      box-shadow: 0 4px 20px -3px rgba(0,0,0,.2);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: transform .25s ease, background .25s ease, border-color .25s ease;
+    }
+    .link-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0 auto 0 -110%;
+      width: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.2), transparent);
+      transition: left .55s ease;
+    }
+    .link-btn:hover { transform: translateY(-2px); background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.36); }
+    .link-btn:hover::before { left: 110%; }
+    .link-btn.primary { background: rgba(112,213,190,.16); border-color: rgba(112,213,190,.48); color: #d8fff2; }
+
+    main { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 1.35rem 5rem; display: flex; flex-direction: column; gap: 1.6rem; position: relative; z-index: 2; }
+    .glass-panel {
+      background: rgba(255,255,255,.055);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+      border: 1px solid var(--line);
+      border-radius: 2rem;
+      box-shadow: var(--shadow);
+    }
+    .section { padding: clamp(1.5rem, 4vw, 3.2rem); }
+    .section-heading { margin: 0 0 .8rem; font-size: clamp(2rem, 4vw, 3.25rem); line-height: 1.06; font-weight: 500; letter-spacing: -.04em; }
+    .section-heading .serif { color: #e1e2ff; }
+    .section-intro { max-width: 760px; margin: 0; color: var(--muted); font-size: 1.18rem; line-height: 1.55; }
+    .section-kicker { margin: 0 0 .8rem; color: var(--mint); font-size: .78rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+
+    .intro-grid { display: grid; grid-template-columns: 1.3fr .7fr; gap: 2.5rem; align-items: center; }
+    .intro-quote { margin: 0; max-width: 440px; color: rgba(255,255,255,.92); font-size: clamp(1.5rem, 3vw, 2.2rem); line-height: 1.3; }
+    .accent-rule { width: 4.2rem; height: 3px; margin-top: 1.4rem; border-radius: 5px; background: linear-gradient(90deg, var(--teal), #b8d9a9); }
+
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 2.25rem; }
+    .stat { padding: 1.2rem 1.25rem; border-radius: 1.2rem; background: rgba(3,20,12,.22); border: 1px solid rgba(255,255,255,.10); }
+    .stat-number { display: block; color: #e0e0ff; font-size: clamp(2rem, 4vw, 3rem); line-height: 1; font-weight: 600; letter-spacing: -.05em; }
+    .stat-label { display: block; margin-top: .65rem; color: rgba(255,255,255,.67); font-size: .95rem; line-height: 1.3; }
+
+    .focus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+    .focus-card { position: relative; min-height: 230px; padding: 1.45rem; border: 1px solid rgba(255,255,255,.12); border-radius: 1.35rem; background: linear-gradient(145deg, rgba(255,255,255,.075), rgba(0,0,0,.08)); overflow: hidden; }
+    .focus-card::after { content: ''; position: absolute; width: 145px; height: 145px; right: -65px; bottom: -75px; border: 1px solid rgba(154,219,184,.18); border-radius: 50%; box-shadow: 0 0 0 18px rgba(154,219,184,.025), 0 0 0 38px rgba(154,219,184,.02); }
+    .focus-index { color: var(--teal); font-size: .78rem; font-weight: 700; letter-spacing: .15em; }
+    .focus-card h3 { margin: 1.25rem 0 .55rem; font-size: 1.4rem; font-weight: 600; }
+    .focus-card p { max-width: 34rem; margin: 0; color: var(--muted); line-height: 1.5; font-size: 1.02rem; }
+
+    .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+    .feature-card { padding: 1.7rem; border-radius: 1.4rem; border: 1px solid rgba(255,255,255,.13); background: rgba(2,17,10,.22); }
+    .feature-card h3 { margin: 0 0 .6rem; font-size: 1.55rem; font-weight: 600; }
+    .feature-card p { margin: 0; color: var(--muted); line-height: 1.55; font-size: 1.05rem; }
+    .feature-card .feature-meta { margin-bottom: .65rem; color: var(--mint); font-size: .8rem; letter-spacing: .13em; text-transform: uppercase; font-weight: 700; }
+    .feature-card ul { margin: 1rem 0 0; padding-left: 1.15rem; color: rgba(255,255,255,.78); line-height: 1.55; }
+    .feature-card li { margin: .35rem 0; padding-left: .2rem; }
+
+    .current-role { display: grid; grid-template-columns: .34fr .66fr; gap: 2rem; align-items: start; margin-top: 1.8rem; }
+    .role-date { color: var(--mint); font-size: .9rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    .role-title { margin: .35rem 0 .35rem; font-size: 1.6rem; font-weight: 600; }
+    .role-company { margin: 0; color: rgba(255,255,255,.63); font-size: 1rem; }
+    .role-copy { color: rgba(255,255,255,.78); font-size: 1.08rem; line-height: 1.55; }
+    .role-copy p { margin: 0 0 .8rem; }
+    .role-copy ul { margin: .5rem 0 0; padding-left: 1.2rem; }
+    .role-copy li { margin: .45rem 0; }
+
+    .timeline { position: relative; margin-top: 2rem; }
+    .timeline::before { content: ''; position: absolute; top: .55rem; bottom: .55rem; left: 8.3rem; width: 1px; background: linear-gradient(to bottom, rgba(112,213,190,.8), rgba(255,255,255,.12)); }
+    .timeline-item { display: grid; grid-template-columns: 7.1rem 1fr; gap: 2.4rem; position: relative; padding: 0 0 1.8rem; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before { content: ''; position: absolute; left: calc(8.3rem - 4px); top: .35rem; width: 9px; height: 9px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 5px rgba(112,213,190,.12); }
+    .timeline-date { padding-top: .1rem; color: var(--mint); font-size: .9rem; font-weight: 700; line-height: 1.4; }
+    .timeline-content h3 { margin: 0 0 .2rem; font-size: 1.28rem; font-weight: 600; }
+    .timeline-content .company { margin: 0 0 .55rem; color: rgba(255,255,255,.58); font-size: .95rem; }
+    .timeline-content p, .timeline-content li { color: rgba(255,255,255,.76); font-size: 1rem; line-height: 1.5; }
+    .timeline-content p { margin: 0; }
+    .timeline-content ul { margin: .45rem 0 0; padding-left: 1.15rem; }
+    .timeline-content li { margin: .25rem 0; }
+    .timeline-content details { margin-top: .6rem; }
+    .timeline-content summary { display: inline-block; cursor: pointer; color: #a8e9d8; font-weight: 600; font-size: .93rem; }
+    .timeline-content details[open] summary { margin-bottom: .35rem; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; margin-top: 2rem; }
+    .list-card { padding: 1.5rem; border-radius: 1.35rem; border: 1px solid rgba(255,255,255,.12); background: rgba(2,17,10,.22); }
+    .list-card h3 { margin: 0 0 1rem; font-size: 1.35rem; }
+    .plain-list { list-style: none; margin: 0; padding: 0; }
+    .plain-list li { padding: .7rem 0; border-top: 1px solid rgba(255,255,255,.09); color: rgba(255,255,255,.79); line-height: 1.42; }
+    .plain-list li:first-child { border-top: 0; padding-top: 0; }
+    .plain-list strong { color: #fff; font-weight: 600; }
+    .plain-list span { color: rgba(255,255,255,.57); }
+    .skills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.7rem; }
+    .skill { display: inline-flex; align-items: center; min-height: 35px; padding: .45rem .8rem; border-radius: 999px; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.055); color: rgba(255,255,255,.82); font-size: .92rem; }
+    .education { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; padding: 1.25rem 1.4rem; border-radius: 1.2rem; background: rgba(3,20,12,.22); border: 1px solid rgba(255,255,255,.1); }
+    .education h3 { margin: 0 0 .25rem; font-size: 1.1rem; }
+    .education p { margin: 0; color: var(--muted); }
+    .education .year { color: var(--mint); font-weight: 700; }
+
+    footer { position: relative; z-index: 2; padding: 1.7rem 1rem calc(1.7rem + env(safe-area-inset-bottom)); text-align: center; color: rgba(255,255,255,.48); font-size: .9rem; }
+    footer a { color: rgba(255,255,255,.76); }
+
+    @media (max-width: 800px) {
+      .topbar { padding: 1rem 1.25rem; }
+      .nav-links { gap: .85rem; font-size: .88rem; }
+      .hero { min-height: 780px; padding: 7rem 1.35rem 4rem; }
+      .hero::before { width: 100vw; right: -35vw; top: 16vh; }
+      .hero::after { width: 65vw; right: 0; top: 23vh; }
+      .intro-grid, .current-role { grid-template-columns: 1fr; gap: 1.5rem; }
+      .intro-quote { max-width: 650px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .focus-grid { grid-template-columns: 1fr; }
+      .focus-card { min-height: auto; }
+      .feature-grid, .two-col { grid-template-columns: 1fr; }
+      .timeline::before { left: 6.8rem; }
+      .timeline-item { grid-template-columns: 5.7rem 1fr; gap: 2.2rem; }
+      .timeline-item::before { left: calc(6.8rem - 4px); }
+    }
+    @media (max-width: 520px) {
+      .topbar { align-items: flex-start; }
+      .brand { font-size: 1rem; gap: .55rem; }
+      .brand-mark { width: 2.2rem; height: 2.2rem; }
+      .nav-links { gap: .65rem; font-size: .78rem; }
+      .nav-links a:nth-child(2) { display: none; }
+      .hero { min-height: 760px; min-height: 96svh; padding: 7rem 1.2rem 3.5rem; }
+      .hero h1 { font-size: clamp(3rem, 14vw, 4.7rem); }
+      .hero-meta { font-size: .9rem; }
+      .hero-meta span + span::before { margin-right: .65rem; }
+      main { padding: 0 .8rem 3rem; gap: 1rem; }
+      .section { padding: 1.45rem 1.2rem; border-radius: 1.5rem; }
+      .stats-grid { gap: .65rem; }
+      .stat { padding: 1rem .9rem; }
+      .stat-label { font-size: .85rem; }
+      .timeline::before { left: 5.1rem; }
+      .timeline-item { grid-template-columns: 4rem 1fr; gap: 1.65rem; }
+      .timeline-item::before { left: calc(5.1rem - 4px); }
+      .timeline-date { font-size: .78rem; }
+      .timeline-content h3 { font-size: 1.12rem; }
+      .actions { gap: .65rem; }
+      .link-btn { padding: .78rem 1rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="ambient-bg" aria-hidden="true"></div>
+  <div class="ambient-shade" aria-hidden="true"></div>
+
+  <nav class="topbar" aria-label="Main navigation">
+    <a class="brand" href="#top" aria-label="Jade Barry home">
+      <span class="brand-mark" aria-hidden="true">jb</span>
+      <span>jade<strong>barry</strong></span>
+    </a>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#journey">Experience</a>
+      <a href="#community">Community</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <div class="eyebrow">Employee experience · Change · Events</div>
+      <h1>Making complex change feel <span class="serif">human.</span><br>Bringing people together.</h1>
+      <p class="hero-copy">I build the experiences, communications, and connections that help people navigate change and do meaningful work together.</p>
+      <div class="hero-meta">
+        <span>Jade Barry (she/her)</span>
+        <span>Columbus, Ohio</span>
+        <span>CoverMyMeds</span>
+      </div>
+      <div class="actions" id="contact">
+        <a class="link-btn primary" href="mailto:hello@jadebarry.com?subject=Hello%20Jade">Get in touch</a>
+        <a class="link-btn" href="mailto:hello@jadebarry.com?subject=Speaking%20inquiry">Speaking</a>
+        <a class="link-btn" href="https://linkedin.com/in/jadebarry" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="glass-panel section">
+      <div class="intro-grid">
+        <div>
+          <p class="section-kicker">The through line</p>
+          <h2 class="section-heading">People, purpose, and <span class="serif">possibility.</span></h2>
+          <p class="section-intro">My work sits at the intersection of employee engagement, event design, organizational communication, change management, and data strategy. I bring a producer's mindset to the details and a people-first lens to the bigger picture.</p>
+        </div>
+        <div>
+          <p class="intro-quote serif">“Transforming a standard training week into an event people plan their year around.”</p>
+          <div class="accent-rule"></div>
+        </div>
+      </div>
+      <div class="stats-grid" aria-label="Selected work at a glance">
+        <div class="stat"><span class="stat-number">850+</span><span class="stat-label">People reached through employee events and hackathons</span></div>
+        <div class="stat"><span class="stat-number">300+</span><span class="stat-label">Attendees at the annual internal conference</span></div>
+        <div class="stat"><span class="stat-number">40+</span><span class="stat-label">Conference sessions coordinated</span></div>
+        <div class="stat"><span class="stat-number">$45K</span><span class="stat-label">Annual budget managed for a 600+ member ERG</span></div>
+      </div>
+    </section>
+
+    <section class="glass-panel section" id="work">
+      <p class="section-kicker">How I make an impact</p>
+      <h2 class="section-heading">From big-picture strategy to <span class="serif">the smallest detail.</span></h2>
+      <p class="section-intro">The strongest experiences do more than bring people into a room. They create clarity, spark connection, and make change easier to move through.</p>
+      <div class="focus-grid">
+        <article class="focus-card">
+          <span class="focus-index">01 / EXPERIENCE</span>
+          <h3>Events with intention</h3>
+          <p>Internal conferences, hackathons, speaker programs, branded spaces, and hybrid experiences designed to turn routine moments into shared milestones.</p>
+        </article>
+        <article class="focus-card">
+          <span class="focus-index">02 / COMMUNICATION</span>
+          <h3>Leadership with a voice</h3>
+          <p>Communications for the CTO and Tech Leadership Team, including Town Halls, newsletters, leadership events, and channels that connect teams to the work.</p>
+        </article>
+        <article class="focus-card">
+          <span class="focus-index">03 / CHANGE</span>
+          <h3>Systems people can use</h3>
+          <p>Center of Excellence design, data governance, strategic planning, engagement listening, and change initiatives that build organizational maturity.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="glass-panel section">
+      <p class="section-kicker">Selected work</p>
+      <h2 class="section-heading">Making the <span class="serif">work matter.</span></h2>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <p class="feature-meta">Event strategy · CoverMyMeds</p>
+          <h3>Analytics Week</h3>
+          <p>Launched an annual change event for 300+ attendees, transforming a standard training week into an experience people plan their year around.</p>
+          <ul>
+            <li>Coordinated 40+ sessions with internal and external speakers.</li>
+            <li>Created speaker coaching and presentation templates to support content quality.</li>
+            <li>Built in custom swag, branded spaces, comedy shows, and happy hours.</li>
+            <li>Designed the hybrid experience so virtual attendees felt like first-class participants.</li>
+            <li>Connected data teams who had not met after company mergers.</li>
+          </ul>
+        </article>
+        <article class="feature-card">
+          <p class="feature-meta">Organizational design · Change management</p>
+          <h3>Center of Excellence &amp; data governance</h3>
+          <p>Pitched and founded a Center of Excellence to address disconnection and inefficiency across distributed, decentralized teams.</p>
+          <ul>
+            <li>Facilitated enterprise analytics strategic planning and aligned data priorities with business objectives.</li>
+            <li>Launched a data governance program and led adoption across analytics teams.</li>
+            <li>Enabled knowledge centralization, stakeholder literacy, data discovery, and clearer data flows.</li>
+            <li>Partnered with senior leadership on culture and organizational change during mergers and reorganizations.</li>
+          </ul>
+        </article>
+        <article class="feature-card">
+          <p class="feature-meta">Engagement · Leadership communication</p>
+          <h3>Listening and culture</h3>
+          <p>Represented team needs to leadership through engagement survey analysis, focus groups, and ongoing feedback from the people doing the work.</p>
+          <ul>
+            <li>Developed workshops around engagement survey results using Innovation Engineering tactics.</li>
+            <li>Planned leadership communications, Town Halls, and Analytics Leadership events.</li>
+            <li>Cultivated learning and development, change, and culture initiatives.</li>
+          </ul>
+        </article>
+        <article class="feature-card">
+          <p class="feature-meta">People leadership · Data strategy</p>
+          <h3>Building capable teams</h3>
+          <p>Led data engineering and data science strategy for a Specialty pharmaceutical access hub product.</p>
+          <ul>
+            <li>Recruited, led, and mentored data engineers and data scientists.</li>
+            <li>Directed Operations Analytics team hiring, data product strategy, prioritization, and long-range planning.</li>
+            <li>Coordinated analytics work for a specialty brand launch with internal teams, clients, and pharmaceutical data aggregators.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="glass-panel section">
+      <p class="section-kicker">Right now</p>
+      <h2 class="section-heading">A focus on <span class="serif">connection.</span></h2>
+      <div class="current-role">
+        <div>
+          <div class="role-date">2026 — Present</div>
+          <h3 class="role-title">Technology Employee Engagement Manager</h3>
+          <p class="role-company">CoverMyMeds · Columbus, OH</p>
+        </div>
+        <div class="role-copy">
+          <p>Designing and executing employee engagement events for the Technology organization, including internal conferences and hackathons for more than 850 people.</p>
+          <ul>
+            <li>Serving as the voice of the CTO and Tech Leadership Team across Town Halls, newsletters, and other team communications.</li>
+            <li>Representing Technology team needs to leadership through engagement survey analysis, focus groups, and ongoing listening.</li>
+            <li>Cultivating learning and development, change, and culture initiatives.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass-panel section" id="journey">
+      <p class="section-kicker">Career journey</p>
+      <h2 class="section-heading">A career built across <span class="serif">people, data, and production.</span></h2>
+      <div class="timeline">
+        <article class="timeline-item">
+          <div class="timeline-date">2021 — 2026</div>
+          <div class="timeline-content">
+            <h3>Manager, Enablement &amp; Change Management</h3>
+            <p class="company">CoverMyMeds · Columbus, OH</p>
+            <p>Founded a Center of Excellence, facilitated enterprise analytics planning, launched data governance, and led change and culture initiatives. Also served as Chief of Staff to the VP of Analytics, supporting strategic planning, workshops, and leadership communications.</p>
+          </div>
+        </article>
+        <article class="timeline-item">
+          <div class="timeline-date">2022 — 2024</div>
+          <div class="timeline-content">
+            <h3>Manager, Specialty Data Science &amp; Engineering</h3>
+            <p class="company">CoverMyMeds · Columbus, OH</p>
+            <p>Led data engineering and data science strategy for a Specialty pharmaceutical access hub product; recruited, led, and mentored data engineers and data scientists.</p>
+          </div>
+        </article>
+        <article class="timeline-item">
+          <div class="timeline-date">2021 — 2024</div>
+          <div class="timeline-content">
+            <h3>Co-Chair, Women Empowered ERG</h3>
+            <p class="company">CoverMyMeds · Columbus, OH</p>
+            <p>Board leadership for a 600+ member organization. Coordinated speaker series, professional development workshops, and networking events, and managed a $45,000 annual budget with ROI analysis.</p>
+          </div>
+        </article>
+        <article class="timeline-item">
+          <div class="timeline-date">2019 — 2021</div>
+          <div class="timeline-content">
+            <h3>Senior Data Analyst</h3>
+            <p class="company">CoverMyMeds · Columbus, OH</p>
+            <p>Directed Operations Analytics team planning and coordinated analytics work for a specialty brand launch.</p>
+          </div>
+        </article>
+        <article class="timeline-item">
+          <div class="timeline-date">2011 — 2019</div>
+          <div class="timeline-content">
+            <h3>Board Member, Director of Marketing &amp; Technology</h3>
+            <p class="company">Stalwart Theatre · Columbus, OH</p>
+            <p>Led marketing, ticketing and event technology, vendor management, and back-of-house technology for original and licensed productions. Produced five short films, organizing production teams, logistics, and budgets.</p>
+          </div>
+        </article>
+      </div>
+      <div class="two-col">
+        <div class="list-card">
+          <h3>Earlier experience</h3>
+          <ul class="plain-list">
+            <li><strong>Senior Insights Analyst</strong><br><span>Express · Columbus, OH · 2018–2019</span></li>
+            <li><strong>Senior Business Analyst</strong><br><span>HSD Metrics · Remote · 2016–2018</span></li>
+            <li><strong>Senior International Pricing Analyst</strong><br><span>Victoria’s Secret · Columbus, OH · 2013–2016</span></li>
+            <li><strong>Promotion &amp; Sales Analyst</strong><br><span>Bob Evans Foods · Columbus, OH · 2011–2013</span></li>
+          </ul>
+        </div>
+        <div class="list-card">
+          <h3>Education</h3>
+          <p style="margin:0 0 .45rem;color:rgba(255,255,255,.9);font-size:1.12rem;font-weight:600;">Bachelor of Science in Business Administration</p>
+          <p style="margin:0;color:var(--muted);line-height:1.5;">Lee University<br>Cleveland, Tennessee · 2008–2011</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass-panel section" id="community">
+      <p class="section-kicker">Beyond the job description</p>
+      <h2 class="section-heading">Community, care, and <span class="serif">sharing ideas.</span></h2>
+      <div class="two-col">
+        <div class="list-card">
+          <h3>Community &amp; leadership</h3>
+          <ul class="plain-list">
+            <li><strong>Pride Midwest ERG Chair</strong><br><span>2026–Present</span></li>
+            <li><strong>Medic, First Aid Central Ohio</strong><br><span>2025–Present · Supporting unhoused communities</span></li>
+            <li><strong>Co-Founder, Porch Pantry</strong><br><span>2025 · Food assistance mutual aid organization</span></li>
+            <li><strong>Innovation Engineering Blue Belt</strong><br><span>2024</span></li>
+          </ul>
+        </div>
+        <div class="list-card">
+          <h3>Speaking</h3>
+          <ul class="plain-list">
+            <li><strong>Belonging</strong><br><span>TEDxColumbus · 2026 (upcoming)</span></li>
+            <li><strong>Center of Excellence Design</strong><br><span>WITCon · Cleveland · 2024</span></li>
+            <li><strong>Leading Change through Events</strong><br><span>DataConnect Conference · 2022 and 2023</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass-panel section">
+      <p class="section-kicker">Areas of practice</p>
+      <h2 class="section-heading">Tools for making <span class="serif">things happen.</span></h2>
+      <div class="skills" aria-label="Skills">
+        <span class="skill">Event Design</span>
+        <span class="skill">Budget Management</span>
+        <span class="skill">Employee Experience</span>
+        <span class="skill">Executive &amp; Organizational Communication</span>
+        <span class="skill">Vendor Management</span>
+        <span class="skill">Change Management</span>
+        <span class="skill">Team Management</span>
+        <span class="skill">Development &amp; Mentorship</span>
+        <span class="skill">Data Visualization</span>
+        <span class="skill">Data Storytelling</span>
+        <span class="skill">Data Strategy</span>
+        <span class="skill">Center of Excellence Design</span>
+        <span class="skill">Hiring</span>
+      </div>
+      <div class="education" style="margin-top:2rem;">
+        <div>
+          <h3>Let’s make something meaningful.</h3>
+          <p>For speaking, collaboration, or a good conversation.</p>
+        </div>
+        <a class="link-btn primary" href="mailto:hello@jadebarry.com?subject=Let%E2%80%99s%20connect">hello@jadebarry.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> jade barry · Columbus, Ohio · <a href="tel:+16142029865">614-202-9865</a></p>
+  </footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

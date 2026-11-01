@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#2C5848">
+    <title>Timeline | jade barry</title>
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="msapplication-navbutton-color" content="#2C5848">
+    <meta name="apple-mobile-web-app-title" content="jade" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            background-color: transparent;
+        }
+        
+        body {
+            font-family: 'League Spartan', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        .serif {
+            font-family: 'Libre Baskerville', Georgia, serif;
+        }
+
+        /* Fixed Hero Background */
+        .hero-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 45vh; /* Slightly shorter for internal pages */
+            background-image: url('understory-bg.png');
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
+        }
+
+        .hero-section {
+            height: 45vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding-bottom: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* CSS-only scroll blur overlay */
+        .content-wrapper {
+            position: relative;
+            width: 100%;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 0;
+            width: 100%;
+            height: calc(100% + 100px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0px, black 300px);
+            mask-image: linear-gradient(to bottom, transparent 0px, black 300px);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .animated-bg {
+            background: linear-gradient(-45deg, #001005, #00290C, #2C5848, #001005);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            position: fixed;
+            top: -10vh;
+            left: -10vw;
+            width: 120vw;
+            height: 120vh;
+            z-index: -2;
+            opacity: 0.95;
+        }
+
+        .animated-bg-overlay {
+            position: fixed;
+            inset: -100px;
+            background-color: #0f0f11;
+            opacity: 0.15;
+            z-index: -2;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphism Styles */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 20px -3px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Timeline Dot Glow */
+        .timeline-dot {
+            box-shadow: 0 0 15px rgba(45, 212, 191, 0.6);
+        }
+    </style>
+</head>
+<body class="text-white min-h-screen flex flex-col">
+
+    <!-- Backgrounds -->
+    <div class="animated-bg"></div>
+    <div class="animated-bg-overlay"></div>
+    <div id="hero-bg" class="hero-bg"></div>
+
+    <!-- Mini Hero Section -->
+    <header class="hero-section">
+        <div class="hero-content flex flex-row items-center justify-center space-x-4">
+            <img src="/favicon.svg" alt="Jade Barry Logo" class="h-12 w-12 sm:h-16 sm:w-16 object-contain drop-shadow-md">
+            <span class="text-2xl sm:text-3xl tracking-[0.2em] lowercase font-light drop-shadow-lg mt-0">jade<span class="font-semibold">barry</span></span>
+        </div>
+    </header>
+
+    <div class="content-wrapper">
+        <main class="flex-grow px-4 sm:px-8 w-full max-w-4xl mx-auto flex flex-col relative z-10" style="padding-top: 3rem; padding-bottom: max(4rem, calc(env(safe-area-inset-bottom) + 1rem));">
+            
+            <!-- Page Title -->
+            <div class="mb-12 text-center sm:text-left ml-0 sm:ml-12">
+                <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight">The <span class="serif italic font-light">Journey</span></h1>
+                <p class="text-white/70 mt-3 font-light text-lg">A continuously evolving record of roles, projects, and milestones.</p>
+            </div>
+
+            <!-- TIMELINE CONTAINER -->
+            <div class="relative border-l-2 border-white/20 pl-8 sm:pl-12 ml-4 sm:ml-12 space-y-12 pb-8">
+
+                <!-- Timeline Item: TEDx -->
+                <div class="relative group">
+                    <!-- Glowing Dot -->
+                    <div class="timeline-dot absolute -left-[43px] sm:-left-[59px] top-6 h-5 w-5 rounded-full bg-teal-400 border-4 border-[#001005] group-hover:bg-emerald-300 transition-colors"></div>
+                    
+                    <div class="glass-panel rounded-[2rem] p-6 sm:p-8 hover:bg-white/10 transition-colors duration-300">
+                        <span class="text-teal-300 font-mono text-sm tracking-wider font-semibold">NOVEMBER 2026</span>
+                        <h3 class="text-2xl font-bold mt-2 text-white">Upcoming Speaker: Belonging</h3>
+                        <h4 class="text-lg text-white/80 font-light mb-4 serif italic">TEDxColumbus</h4>
+                        <p class="text-white/70 font-light leading-relaxed">
+                            Preparing to take the TEDx stage to speak on themes of belonging, organizational maturity, and shared human experiences.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Timeline Item: CoverMyMeds -->
+                <div class="relative group">
+                    <div class="timeline-dot absolute -left-[43px] sm:-left-[59px] top-6 h-5 w-5 rounded-full bg-teal-400 border-4 border-[#001005] group-hover:bg-emerald-300 transition-colors"></div>
+                    
+                    <div class="glass-panel rounded-[2rem] p-6 sm:p-8 hover:bg-white/10 transition-colors duration-300">
+                        <span class="text-teal-300 font-mono text-sm tracking-wider font-semibold">2026 – PRESENT</span>
+                        <h3 class="text-2xl font-bold mt-2 text-white">Technology Employee Engagement Manager</h3>
+                        <h4 class="text-lg text-white/80 font-light mb-4 serif italic">CoverMyMeds • Columbus, OH</h4>
+                        <ul class="list-disc list-inside text-white/70 font-light space-y-2 leading-relaxed">
+                            <li><strong>Events Strategy:</strong> Designed and executed internal conferences and hackathons for over 850 people.</li>
+                            <li><strong>Leadership Communication:</strong> Acted as the voice of the CTO and Tech Leadership Team across Town Halls and newsletters.</li>
+                            <li><strong>Engagement Strategy:</strong> Represented tech team needs through survey analysis, focus groups, and cultivating L&D/culture initiatives.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Timeline Item: Stalwart Theatre -->
+                <div class="relative group">
+                    <div class="timeline-dot absolute -left-[43px] sm:-left-[59px] top-6 h-5 w-5 rounded-full bg-teal-400 border-4 border-[#001005] group-hover:bg-emerald-300 transition-colors"></div>
+                    
+                    <div class="glass-panel rounded-[2rem] p-6 sm:p-8 hover:bg-white/10 transition-colors duration-300">
+                        <span class="text-teal-300 font-mono text-sm tracking-wider font-semibold">2011 – 2019</span>
+                        <h3 class="text-2xl font-bold mt-2 text-white">Director of Marketing & Technology / Board Member</h3>
+                        <h4 class="text-lg text-white/80 font-light mb-4 serif italic">Stalwart Theatre</h4>
+                        <p class="text-white/70 font-light leading-relaxed">
+                            Oversaw event technology, vendor relations, and front-of-house operations for original and licensed stage productions. Merged technical theatre execution with marketing strategy to build unforgettable audience experiences.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Copy this block to add a new item -->
+                <!--
+                <div class="relative group">
+                    <div class="timeline-dot absolute -left-[43px] sm:-left-[59px] top-6 h-5 w-5 rounded-full bg-teal-400 border-4 border-[#001005] group-hover:bg-emerald-300 transition-colors"></div>
+                    <div class="glass-panel rounded-[2rem] p-6 sm:p-8 hover:bg-white/10 transition-colors duration-300">
+                        <span class="text-teal-300 font-mono text-sm tracking-wider font-semibold">DATE GOES HERE</span>
+                        <h3 class="text-2xl font-bold mt-2 text-white">TITLE GOES HERE</h3>
+                        <h4 class="text-lg text-white/80 font-light mb-4 serif italic">LOCATION/COMPANY GOES HERE</h4>
+                        <p class="text-white/70 font-light leading-relaxed">
+                            DESCRIPTION GOES HERE
+                        </p>
+                    </div>
+                </div>
+                -->
+
+            </div>
+        </main>
+
+        <footer class="w-full text-center py-6 text-white/50 text-sm font-light relative z-10">
+            <p>© <script>document.write(new Date().getFullYear())</script> jade barry. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

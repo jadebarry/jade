@@ -5,35 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <!--<meta name="theme-color" content="#2C5848">-->
+    <meta name="apple-mobile-web-app-title" content="jade">
+    <meta name="theme-color" content="#2C5848">
     <title>jade barry</title>
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta name="msapplication-navbutton-color" content="#2C5848">
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <!--<meta name="apple-mobile-web-app-status-bar-style" content="#2C5848">-->
-    <meta name="apple-mobile-web-app-title" content="jade" />
     <link rel="manifest" href="/site.webmanifest" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Spectral:ital,wght@1,300&display=swap" rel="stylesheet">
     <style>
-        html, body {
-            background-color: transparent;
+        html {
+            margin: 0;
+            padding: 0;
+            background: transparent;
         }
         
         body {
             font-family: 'League Spartan', sans-serif;
             margin: 0;
-            /* NEW: Use safe area insets to pad content, but let background bleed to edges */
-            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+            padding: 0;
             overflow-x: hidden;
-            background-color: transparent;
-            /* NEW: Apply background color to match the image, fixing Apple overscroll areas */
-            background-color: #2C5848; 
+            background: transparent;
+            min-height: 100%;
         }
         
         .serif {
@@ -72,6 +70,10 @@
             z-index: 1;
         }
 
+        footer {
+            padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));
+        }
+
         /* The overall scroll blur has been removed. The background will stay sharp except where the cards overlap it. */
 
         @media (max-width: 768px) {
@@ -95,14 +97,13 @@
 
         .animated-bg-overlay {
             position: fixed;
-            /* NEW: Ensure the overlay bleeds entirely through the safe areas */
-            top: -200px;
-            bottom: -200px;
-            left: -200px;
-            right: -200px;
-            background-color: #0f0f11;
-            opacity: 0.15;
+            inset: -200px;
+            background: linear-gradient(
+                rgba(15, 15, 17, 0.15),
+                rgba(15, 15, 17, 0.15)
+            );
             z-index: -2;
+            pointer-events: none;
         }
 
         @keyframes gradientBG {

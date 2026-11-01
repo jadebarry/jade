@@ -51,6 +51,8 @@
             background-size: cover;
             background-position: center;
             z-index: 0;
+            /* Hint to browser for hardware acceleration during scroll fade */
+            will-change: opacity; 
         }
 
         .hero-section {
@@ -336,5 +338,33 @@
     <footer class="w-full text-center py-6 text-white/50 text-sm font-light relative z-10">
         <p>© <script>document.write(new Date().getFullYear())</script> jade barry. All rights reserved.</p>
     </footer>
+
+    <!-- OPTIMIZED: High-performance scroll fade out script -->
+    <script>
+        const heroBg = document.getElementById('hero-bg');
+        let ticking = false;
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrollY = window.scrollY;
+                    // Adjust 800 below to control how fast it fades out 
+                    // (higher number = fades out slower)
+                    const fadeDistance = 800; 
+                    let progress = scrollY / fadeDistance;
+                    
+                    if (progress > 1) progress = 1;
+                    
+                    // Drops the opacity down to 15% at max scroll, keeping a subtle texture
+                    const minOpacity = 0.15; 
+                    const currentOpacity = 1 - (progress * (1 - minOpacity));
+                    
+                    heroBg.style.opacity = currentOpacity;
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+    </script>
 </body>
 </html>

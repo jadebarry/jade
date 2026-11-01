@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- NEW: Added viewport-fit=cover to extend layout under Safari UI -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -24,21 +25,24 @@
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Spectral:ital,wght@1,500&display=swap" rel="stylesheet">
     <style>
         html, body {
-            /* NEW: Apply background color to match the image, fixing Apple overscroll areas */
-            background-color: #2C5848; 
+            background-color: transparent;
         }
         
         body {
             font-family: 'League Spartan', sans-serif;
             margin: 0;
-            padding: 0;
+            /* NEW: Use safe area insets to pad content, but let background bleed to edges */
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
             overflow-x: hidden;
+            background-color: transparent;
+            /* NEW: Apply background color to match the image, fixing Apple overscroll areas */
+            background-color: #2C5848; 
         }
         
         .serif {
             font-family: 'Spectral', Georgia, serif;
             font-style: italic;
-            font-weight: 500;
+            font-weight: 300; /* UPDATED: Changed to 300 weight per request */
         }
 
         /* Fixed Hero Background */
@@ -94,7 +98,11 @@
 
         .animated-bg-overlay {
             position: fixed;
-            inset: -100px;
+            /* NEW: Ensure the overlay bleeds entirely through the safe areas */
+            top: -200px;
+            bottom: -200px;
+            left: -200px;
+            right: -200px;
             background-color: #0f0f11;
             opacity: 0.15;
             z-index: -2;
@@ -176,8 +184,8 @@
         <section class="glass-panel rounded-[2rem] p-6 sm:p-12">
             <div class="flex flex-col space-y-8 max-w-4xl mx-auto text-center sm:text-left">
                     
-                <!-- UPDATED: Removed font-light from heading -->
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl leading-tight">
+                <!-- UPDATED: Removed font-light from heading, League Spartan font weight is already handled globally or implicitly by text classes. -->
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-light leading-tight">
                     <span class="serif italic tracking-wide text-white/90">Creative</span> 
                     Strategist & Employee Experience Leader
                 </h1>
@@ -236,7 +244,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                 <div class="flex flex-col space-y-4">
                     <!-- UPDATED: Removed font-light -->
-                    <h2 class="text-3xl sm:text-4xl tracking-tight">Original <span class="serif italic">Soundscapes</span></h2>
+                    <h2 class="text-3xl sm:text-4xl font-light tracking-tight">Original <span class="serif italic">Soundscapes</span></h2>
                     <!-- UPDATED: Removed font-light and increased text size to text-lg -->
                     <p class="text-lg text-white/70 leading-relaxed max-w-md">
                         Crafting soundscapes that drive narrative and emotion. Exploring the intersection of digital synthesis and acoustic warmth to produce original compositions. 
@@ -255,7 +263,7 @@
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
                 <div class="flex flex-col space-y-2">
                     <!-- UPDATED: Removed font-light -->
-                    <h2 class="text-3xl sm:text-4xl tracking-tight">Short <span class="serif italic">Films</span></h2>
+                    <h2 class="text-3xl sm:text-4xl font-light tracking-tight">Short <span class="serif italic">Films</span></h2>
                     <!-- UPDATED: Removed font-light and increased text size to text-lg -->
                     <p class="text-lg text-white/70 max-w-2xl">
                         Produced 5 distinct short films, orchestrating everything behind the camera. Managed production teams, shooting logistics, budgets, and creative problem-solving.
@@ -277,7 +285,7 @@
         <section class="glass-panel rounded-[2rem] p-6 sm:p-12 flex flex-col space-y-8">
             <div class="flex flex-col space-y-2 text-center items-center">
                 <!-- UPDATED: Removed font-light -->
-                <h2 class="text-3xl sm:text-4xl tracking-tight">Event <span class="serif italic">Design</span></h2>
+                <h2 class="text-3xl sm:text-4xl font-light tracking-tight">Event <span class="serif italic">Design</span></h2>
                 <!-- UPDATED: Removed font-light and increased text size to text-lg -->
                 <p class="text-lg text-white/70 max-w-2xl text-center">
                     Scaled internal engagement by designing impactful events for up to 850 people. Renowned for breaking down silos and transforming corporate routines into cultural phenomena.
@@ -313,7 +321,7 @@
                 <!-- Content -->
                 <div class="order-1 lg:order-2 flex flex-col space-y-6">
                     <!-- UPDATED: Removed font-light -->
-                    <h2 class="text-3xl sm:text-4xl tracking-tight">Theatrical <span class="serif italic">Roots</span></h2>
+                    <h2 class="text-3xl sm:text-4xl font-light tracking-tight">Theatrical <span class="serif italic">Roots</span></h2>
                     
                     <!-- UPDATED: Removed font-light and increased text size to text-lg -->
                     <div class="space-y-4 text-white/80 text-lg leading-relaxed">

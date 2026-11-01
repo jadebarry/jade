@@ -1,48 +1,398 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>jade barry</title>
-  <link rel="stylesheet" href="/style.css?t=2512171616" />
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <meta name="theme-color" content="#486260">
-  <meta name="msapplication-navbutton-color" content="#486260">
-  <meta name="apple-mobile-web-app-capable" content="yes"/>
-  <meta name="apple-mobile-web-app-status-bar-style" content="#486260">
-  <meta name="apple-mobile-web-app-title" content="jade" />
-  <link rel="manifest" href="/site.webmanifest" />
-  <script src="https://kit.fontawesome.com/dbe6d8d7ae.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#2C5848">
+    <title>jade barry</title>
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="msapplication-navbutton-color" content="#2C5848">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="#2C5848">
+    <meta name="apple-mobile-web-app-title" content="jade" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Spectral:ital,wght@1,300&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            background-color: transparent;
+        }
+        
+        body {
+            font-family: 'League Spartan', sans-serif;
+            margin: 0;
+            /* NEW: Use safe area insets to pad content, but let background bleed to edges */
+            padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+            overflow-x: hidden;
+            background-color: transparent;
+            /* NEW: Apply background color to match the image, fixing Apple overscroll areas */
+            background-color: #2C5848; 
+        }
+        
+        .serif {
+            font-family: 'Spectral', Georgia, serif;
+            font-style: italic;
+            font-weight: 300; /* UPDATED: Changed to 300 weight per request */
+        }
+
+        /* Fixed Hero Background */
+        .hero-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('understory-framec.png');
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
+            /* Hint to browser for hardware acceleration during scroll fade */
+            will-change: opacity; 
+        }
+
+        .hero-section {
+            height: 100vh; 
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding-bottom: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+
+        /* The overall scroll blur has been removed. The background will stay sharp except where the cards overlap it. */
+
+        @media (max-width: 768px) {
+            .hero-section, .hero-bg {
+                height: 100vh;
+            }
+        }
+
+        .animated-bg {
+            background: linear-gradient(-45deg, #001005, #00290C, #2C5848, #001005);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            position: fixed;
+            top: -10vh;
+            left: -10vw;
+            width: 120vw;
+            height: 120vh;
+            z-index: -2;
+            opacity: 0.95;
+        }
+
+        .animated-bg-overlay {
+            position: fixed;
+            /* NEW: Ensure the overlay bleeds entirely through the safe areas */
+            top: -200px;
+            bottom: -200px;
+            left: -200px;
+            right: -200px;
+            background-color: #0f0f11;
+            opacity: 0.15;
+            z-index: -2;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glassmorphism Styles */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 20px -3px rgba(0, 0, 0, 0.2);
+        }
+
+        .pulse-pill {
+            animation: pulse-glow 2s infinite;
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(44, 88, 72, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(44, 88, 72, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(44, 88, 72, 0); }
+        }
+
+        .link-btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .link-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .link-btn:hover::before {
+            left: 100%;
+        }
+
+        .link-btn:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+    </style>
 </head>
-<body>
-  <div class="wrapper">
-    <div class="background"></div>
-    <div class="overlay"></div>
-      <div class="content neon">
-        <h1>jade barry</h1>
-        <h3>gathering strategist, musician, model</h3>
-        <p>available for speaking, workshops, and modeling opportunities</p>
-        <div class="links">
-          <a title="linkedin" tooltip="linkedin" href="https://www.linkedin.com/in/jadebarry/"><i class="fa fa-linkedin-square"></i></a>
-          <a title="email" tooltip="email" href="mailto:%68%65%6c%6c%6f%40%6a%61%64%65%62%61%72%72%79%2e%63%6f%6d"><i class="fa fa-square-envelope"></i></a>
-          <!--<a title="listen to roman minerals" tooltip="listen to roman minerals" href="https://romanminerals.com"><i class="fa fa-circle-play"></i></a>-->
-          <a title="speakerhub" tooltip="speakerhub" href="https://speakerhub.com/speaker/jade-barry"><i class="fa-solid fa-microphone"></i></a>
+<body class="text-white min-h-screen flex flex-col">
+
+    <!-- Backgrounds -->
+    <div class="animated-bg"></div>
+    <div class="animated-bg-overlay"></div>
+    <div id="hero-bg" class="hero-bg"></div>
+
+    <!-- Hero Section (Image & Logo) -->
+    <header class="hero-section">
+        <div class="hero-content flex flex-row items-center justify-center space-x-4">
+            <img src="/favicon.svg" alt="Jade Barry Logo" class="h-16 w-16 sm:h-20 sm:w-20 object-contain drop-shadow-md">
+            <!-- UPDATED: Name text color is now #D6D6FF, removed  -->
+            <span class="text-3xl sm:text-4xl tracking-[0.2em] lowercase drop-shadow-lg mt-0" style="color: #D6D6FF;">jade<span class="font-semibold">barry</span></span>
         </div>
-        <div class="logo">
-          <svg id="a" data-name="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <path d="M78.46,13.02L44.7,4.6c-3.98-.99-8.19.17-11.1,3.08L7.68,33.6c-2.9,2.9-4.07,7.11-3.08,11.1l8.42,33.76c1.05,4.2,4.32,7.47,8.52,8.52l33.76,8.42c3.98.99,8.19-.17,11.1-3.08l25.92-25.92c2.9-2.9,4.07-7.11,3.08-11.1l-8.42-33.76c-1.05-4.2-4.32-7.47-8.52-8.52ZM37.47,77.61c-1,1-2.11,1.77-3.31,2.27-2.08.86-6.27,1.61-10.94-3.05s-3.94-8.87-3.08-10.95c2.28-5.5,10.24-9.06,20.28-9.06h2.81s0,2.81,0,2.81c0,7.84-2.18,14.41-5.76,17.99ZM67.79,77.62c-.29,2.23-1.74,6.23-8.14,7.95-6.37,1.71-9.63-1.04-11-2.82-.79-1.03-1.37-2.25-1.74-3.62-1.31-4.9.09-11.68,4.01-18.46l1.4-2.43,2.43,1.4c8.7,5.02,13.81,12.08,13.03,17.99ZM40.39,45.26l1.4,2.43-2.43,1.4c-6.79,3.92-13.57,5.32-18.46,4.01-1.37-.37-2.59-.94-3.62-1.74-1.79-1.37-4.53-4.63-2.82-11,1.71-6.4,5.72-7.85,7.95-8.14,5.91-.78,12.97,4.34,17.99,13.03ZM32.81,21.83c.29-2.23,1.74-6.23,8.14-7.95,6.37-1.71,9.63,1.04,11,2.82.79,1.03,1.37,2.25,1.74,3.62,1.31,4.9-.09,11.68-4.01,18.46l-1.4,2.43-2.43-1.4c-8.7-5.02-13.81-12.08-13.03-17.99ZM86.14,59.07c-1.71,6.4-5.72,7.85-7.95,8.14-5.91.78-12.97-4.34-17.99-13.03l-1.4-2.43,2.43-1.4c6.79-3.92,13.57-5.32,18.46-4.01,1.37.37,2.59.94,3.62,1.74,1.79,1.37,4.53,4.63,2.82,11ZM80.41,33.62c-.5,1.2-1.27,2.31-2.27,3.31-3.59,3.59-10.16,5.76-17.99,5.76h-2.81s0-2.81,0-2.81c0-10.04,3.56-18,9.06-20.28,2.08-.86,6.27-1.61,10.95,3.08s3.92,8.86,3.05,10.94Z" style="fill: #ccf;"/>
-          </svg>
-        </div>
-    </div>
-    <div class="blurred-overlay">
-      <div class="outlined"></div>
-      <div class="blur"></div>
-    </div>
-  </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow px-4 sm:px-8 w-full max-w-6xl mx-auto flex flex-col space-y-12 relative z-10" style="padding-top: 3rem; padding-bottom: max(4rem, calc(env(safe-area-inset-bottom) + 1rem));">
+            
+        <!-- Hero Section (Content & CTAs) -->
+        <section class="glass-panel rounded-[2rem] p-6 sm:p-12">
+            <div class="flex flex-col space-y-8 max-w-4xl mx-auto text-center sm:text-left">
+                    
+                <!-- UPDATED: Removed  from heading, League Spartan font weight is already handled globally or implicitly by text classes. -->
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl  leading-tight">
+                    Producer
+                    <span class="serif italic text-white/90">of Events, Experiences, Films, Music, and Care.</span> 
+                </h1>
+                    
+                <!-- UPDATED: Removed  and increased text size from text-lg to text-xl -->
+                <p class="text-xl text-white/80 max-w-2xl mx-auto sm:mx-0">
+                    Making space for human creativity in whatever form that takes.
+                </p>
+
+                <!-- Call to Actions -->
+                <div class="flex flex-wrap gap-4 pt-4 justify-center sm:justify-start">
+                    <a href="mailto:ksfskhrtqc@privaterelay.appleid.com?subject=Speaking" class="link-btn glass-panel border border-white/20 rounded-xl px-6 py-3 font-semibold flex items-center space-x-2">
+                        <span>Have a Chat</span>
+                    </a>
+                    <a href="https://linkedin.com/in/jadebarry" rel="noopener noreferrer" class="link-btn glass-panel border border-white/20 rounded-xl px-6 py-3 font-semibold flex items-center space-x-2">
+                       
+                        <span>Connect on LinkedIn</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vibe / Background Section 
+        <section class="glass-panel rounded-[2rem] p-6 sm:p-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                    
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl group border border-white/10">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                </div>
+                <div class="flex flex-col justify-center space-y-6">
+                    <h3 class="text-2xl sm:text-3xl serif italic text-white/90 leading-relaxed">
+                        "Transforming standard corporate moments into highly anticipated experiences. Bringing a theatrical edge to change management and organizational design."
+                    </h3>
+                    <div class="w-16 h-1 bg-gradient-to-r from-teal-400 to-emerald-400 rounded-full mt-4"></div>
+                </div> 
+
+            </div>
+        </section> -->
+
+        <!-- Music Section -->
+        <section class="glass-panel rounded-[2rem] p-6 sm:p-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                <div class="flex flex-col space-y-4">
+                    <!-- UPDATED: Removed  -->
+                    <h2 class="text-3xl sm:text-4xl  tracking-tight">Original <span class="serif italic">Music</span></h2>
+                    <!-- UPDATED: Removed  and increased text size to text-lg -->
+                    <p class="text-lg text-white/70 leading-relaxed max-w-md">
+                        Tracking in the studio and orchestrating exciting live shows are my jam! Below are a few tunes I wrote and produced.
+                    </p>
+                </div>
+
+                <!-- Soundcloud -->
+                <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay; encrypted-media" 
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A2322819795&color=%23b4c4ec&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+                </iframe>
+            </div>
+        </section>
+
+        <!-- Short Film Section -->
+        <section class="glass-panel rounded-[2rem] p-6 sm:p-12 flex flex-col space-y-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div class="flex flex-col space-y-2">
+                    <!-- UPDATED: Removed  -->
+                    <h2 class="text-3xl sm:text-4xl  tracking-tight">Short <span class="serif italic">Films</span></h2>
+                    <!-- UPDATED: Removed  and increased text size to text-lg -->
+                    <p class="text-lg text-white/70 max-w-2xl">
+                        Writer and producer, orchestrating all the moving pieces behind the camera. Managed production teams, shooting logistics, budgets, and creative problem-solving.
+                    </p>
+                </div>
+                <a href="https://www.imdb.com/name/nm6076145/" class="inline-flex items-center text-sm font-semibold text-teal-300 hover:text-teal-200 transition-colors">
+                    View Full Filmography 
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </a>
+            </div>
+
+            <!-- Cinematic 16:9 Video Embed -->
+            <div class="relative w-full overflow-hidden rounded-2xl border border-white/20 shadow-2xl bg-black aspect-video">
+                <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/9dSxfcCxJTE?si=gJ_pCinKlGpv2Gr3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <!-- Event Design Section -->
+        <section class="glass-panel rounded-[2rem] p-6 sm:p-12 flex flex-col space-y-8">
+            <div class="flex flex-col space-y-2 text-center items-center">
+                <!-- UPDATED: Removed  -->
+                <h2 class="text-3xl sm:text-4xl  tracking-tight">Event <span class="serif italic">Design</span></h2>
+                <!-- UPDATED: Removed  and increased text size to text-lg -->
+                <p class="text-lg text-white/70 max-w-2xl text-center">
+                    Crafting meaningful events that drive change is my obsession, from hackathons and purposeful conferences to community service that has a lasting impact. My heart sings cooking up the tiny details that turn an experience magical.
+                </p>
+
+                <p class="text-lg text-white/70 max-w-2xl text-center">Alongside years of producing short films, theatre shows, and music, I worked in analytics and tech, gaining a deep love for bringing people together. I’ve applied this to the design and execution of over a hundred events – including a flagship annual analytics conference unlike any other company gathering.
+                </p>
+
+                <p class="text-lg text-white/70 max-w-2xl text-center">I have a depth of experience with both in-person and virtual experiences, managing high-performing teams, nurturing vendor partnerships, and collaborating with everyone from the C-suite to individual contributors to craft effective change.
+                </p>
+            </div>
+
+            <!-- Image Gallery Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[200px]">
+                <div class="md:col-span-2 md:row-span-2 relative rounded-xl overflow-hidden group">
+                    <img src="aw.png" alt="Event Design Main Stage" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <!--<span class="text-white font-semibold text-lg">Analytics Week 2023 - Main Stage</span>-->
+                    </div>
+                </div>
+                <div class="relative rounded-xl overflow-hidden group">
+                    <img src="cmm1.jpeg" alt="Event Design Breakout Room" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <!--<span class="text-white font-medium text-sm">Interactive Breakouts</span>-->
+                    </div>
+                </div>
+                <div class="relative rounded-xl overflow-hidden group">
+                    <img src="cmm2.jpeg" alt="Event Design Networking" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <!--<span class="text-white font-medium text-sm">Post-Merger Networking Mixer</span>-->
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Resume Section -->
+        <section class="glass-panel rounded-[2rem] p-6 sm:p-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                <!-- Content -->
+                <div class="order-1 lg:order-2 flex flex-col space-y-6">
+                    <!-- UPDATED: Removed  -->
+                    <h2 class="text-3xl sm:text-4xl  tracking-tight">Career <span class="serif italic">Chops</span></h2>
+                    
+                    <!-- UPDATED: Removed  and increased text size to text-lg -->
+                    <div class="space-y-4 text-white/80 text-lg leading-relaxed">
+                        <p>
+                            My foundation in change management and event design stems directly from my time in technical theatre and production. 
+                        </p>
+                        <p>
+                            As a former Board Member and Director of Marketing & Technology for Stalwart Theatre, I oversaw the invisible gears that make a show spectacular. I managed event technology, production, vendor relations, and front-of-house operations for numerous original and licensed stage productions.
+                        </p>
+                        <p>
+                            It taught me that whether you're bringing together 100 people in a black box theatre or 850 engineers at a corporate summit, the goal is the same: <em>creating a shared, unforgettable experience.</em>
+                        </p>
+                    </div>
+
+                    <div class="pt-4">
+                        <a href="https://linkedin.com/in/jadebarry" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-2 text-teal-300 hover:text-teal-200 transition-colors font-medium">
+                            <span>See Full Resume on LinkedIn</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Medic Section -->
+        <section class="glass-panel rounded-[2rem] p-6 sm:p-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                    
+                <!-- Featured Image 2 
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl group border border-white/10">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                </div> -->
+
+                <!-- Blurb Text -->
+                <div class="flex flex-col justify-center space-y-6">
+                    <h3 class="text-2xl sm:text-3xl tracking-wide text-white/90 leading-relaxed">
+                        Street Medic serving the unhoused community in Columbus.
+                    </h3>
+                    <div class="w-16 h-1 bg-gradient-to-r from-teal-400 to-emerald-400 rounded-full mt-4"></div>
+                </div>
+
+                <div class="flex flex-wrap gap-4 pt-4 justify-center sm:justify-start">
+                    <a href="https://www.amazon.com/hz/wishlist/ls/5Z0MWO7NYYPY" class="link-btn glass-panel border border-white/20 rounded-xl px-6 py-3 font-semibold flex items-center space-x-2">
+                        <span>Donate Items</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Simple Footer -->
+    <footer class="w-full text-center py-6 text-white/50 text-sm relative z-10">
+        <p>© <script>document.write(new Date().getFullYear())</script> jade barry. All rights reserved.</p>
+    </footer>
+
+    <!-- OPTIMIZED: High-performance scroll fade out script -->
+    <script>
+        const heroBg = document.getElementById('hero-bg');
+        let ticking = false;
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrollY = window.scrollY;
+                    // Adjust 800 below to control how fast it fades out 
+                    // (higher number = fades out slower)
+                    const fadeDistance = 800; 
+                    let progress = scrollY / fadeDistance;
+                    
+                    if (progress > 1) progress = 1;
+                    
+                    // Drops the opacity down to 15% at max scroll, keeping a subtle texture
+                    const minOpacity = 0.55; 
+                    const currentOpacity = 1 - (progress * (1 - minOpacity));
+                    
+                    heroBg.style.opacity = currentOpacity;
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
+    </script>
 </body>
 </html>

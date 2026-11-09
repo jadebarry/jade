@@ -43,6 +43,11 @@
             isolation: isolate;
         }
 
+        .callout {
+            font-weight: 500;
+            olor: 
+        }
+
         .serif {
             font-family: 'Spectral', Georgia, serif;
             font-style: italic;
@@ -238,7 +243,7 @@
 
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl leading-tight">
                     Producer
-                    <span class="serif italic text-white/90">of Events, Experiences, Films, Music, and Care.</span>
+                    <span class="serif italic text-white/90">of events, experiences, films, music, and care.</span>
                 </h1>
 
                 <p class="text-xl text-white/80 max-w-2xl mx-auto sm:mx-0">
@@ -261,72 +266,11 @@
             </div>
         </section>
 
-        <!-- Music Section -->
-        <section class="glass-panel rounded-[2rem] p-6 sm:p-12">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-                <div class="flex flex-col space-y-4">
-                    <h2 class="text-3xl sm:text-4xl tracking-tight">
-                        Original <span class="serif italic">Music</span>
-                    </h2>
-
-                    <p class="text-lg text-white/70 leading-relaxed max-w-md">
-                        Tracking in the studio and orchestrating exciting live shows are my jam! Below are a few tunes I wrote and produced.
-                    </p>
-                </div>
-
-                <!-- Soundcloud -->
-                <iframe
-                    width="100%"
-                    height="300"
-                    scrolling="no"
-                    frameborder="no"
-                    allow="autoplay; encrypted-media"
-                    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A2322819795&color=%23b4c4ec&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
-                </iframe>
-            </div>
-        </section>
-
-        <!-- Short Film Section -->
-        <section class="glass-panel rounded-[2rem] p-6 sm:p-12 flex flex-col space-y-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
-                <div class="flex flex-col space-y-2">
-                    <h2 class="text-3xl sm:text-4xl tracking-tight">
-                        Short <span class="serif italic">Films</span>
-                    </h2>
-
-                    <p class="text-lg text-white/70 max-w-2xl">
-                        Writer and producer, orchestrating all the moving pieces behind the camera. Managed production teams, shoot logistics, budgets, and creative solutioning.
-                    </p>
-                </div>
-
-                <a href="https://www.imdb.com/name/nm6076145/"
-                   class="inline-flex items-center text-sm font-semibold text-teal-300 hover:text-teal-200 transition-colors">
-                    View Full Filmography
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                </a>
-            </div>
-
-            <!-- Cinematic 16:9 Video Embed -->
-            <div class="relative w-full overflow-hidden rounded-2xl border border-white/20 shadow-2xl bg-black aspect-video">
-                <iframe
-                    class="absolute inset-0 w-full h-full"
-                    src="https://www.youtube.com/embed/9dSxfcCxJTE?si=gJ_pCinKlGpv2Gr3"
-                    title="YouTube video player"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen>
-                </iframe>
-            </div>
-        </section>
-
         <!-- Event Design Section -->
         <section class="glass-panel rounded-[2rem] p-6 sm:p-12 flex flex-col space-y-8">
             <div class="flex flex-col space-y-2 text-left items-center">
                 <h2 class="text-3xl sm:text-4xl tracking-tight">
-                    Event <span class="serif italic">Design</span>
+                    event <span class="serif italic">design</span>
                 </h2>
 
                 <p class="text-lg text-white/70 max-w-2xl text-left">
@@ -366,12 +310,15 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                 <div class="order-1 lg:order-2 flex flex-col space-y-6">
                     <h2 class="text-3xl sm:text-4xl tracking-tight">
-                        Career <span class="serif italic">Chops</span>
+                        career <span class="serif italic">chops</span>
                     </h2>
 
                     <div class="space-y-4 text-white/80 text-lg leading-relaxed">
+                        <p class="callout text-teal-300">
+                            Change Management • AI Enablement & Ethics • Team Management • Program Ownership • Employee Engagement
+                        </p>
                         <p>
-                            My foundation in change management and event design stems directly from my time in technical theatre and production.
+                            My foundation in data & AI, change management, and event design stems directly from my time in technical theatre and production.
                         </p>
 
                         <p>
@@ -408,9 +355,11 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                 <div class="flex flex-col justify-center space-y-6">
                     <h3 class="text-2xl sm:text-3xl tracking-wide text-white/90 leading-relaxed">
-                        Street Medic serving the unhoused community in Columbus.
+                        street <span class="serif italic">medic</span>
                     </h3>
-
+                    <p class="text-xl text-white/80 max-w-2xl mx-auto sm:mx-0">
+                        Serving the unhoused community in Columbus.
+                    </p>
                     <p class="text-xl text-white/80 max-w-2xl mx-auto sm:mx-0">
                         Hundreds of hours spent on wound care and community support.
                     </p>
@@ -426,6 +375,68 @@
                 </div>
             </div>
         </section>
+        
+        <!-- Music Section -->
+        <section class="glass-panel rounded-[2rem] p-6 sm:p-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+                <div class="flex flex-col space-y-4">
+                    <h2 class="text-3xl sm:text-4xl tracking-tight">
+                        original <span class="serif italic">music</span>
+                    </h2>
+
+                    <p class="text-lg text-white/70 leading-relaxed max-w-md">
+                        Tracking in the studio and orchestrating exciting live shows are my jam! Below are a few tunes I wrote and produced.
+                    </p>
+                </div>
+
+                <!-- Soundcloud -->
+                <iframe
+                    width="100%"
+                    height="300"
+                    scrolling="no"
+                    frameborder="no"
+                    allow="autoplay; encrypted-media"
+                    src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/soundcloud%253Aplaylists%253A2322819795&color=%23b4c4ec&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+                </iframe>
+            </div>
+        </section>
+
+        <!-- Short Film Section -->
+        <section class="glass-panel rounded-[2rem] p-6 sm:p-12 flex flex-col space-y-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                <div class="flex flex-col space-y-2">
+                    <h2 class="text-3xl sm:text-4xl tracking-tight">
+                        short <span class="serif italic">films</span>
+                    </h2>
+
+                    <p class="text-lg text-white/70 max-w-2xl">
+                        Writer and producer, orchestrating all the moving pieces behind the camera. Managed production teams, shoot logistics, budgets, and creative solutioning.
+                    </p>
+                </div>
+
+                <a href="https://www.imdb.com/name/nm6076145/"
+                   class="inline-flex items-center text-sm font-semibold text-teal-300 hover:text-teal-200 transition-colors">
+                    View Full Filmography
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </a>
+            </div>
+
+            <!-- Cinematic 16:9 Video Embed -->
+            <div class="relative w-full overflow-hidden rounded-2xl border border-white/20 shadow-2xl bg-black aspect-video">
+                <iframe
+                    class="absolute inset-0 w-full h-full"
+                    src="https://www.youtube.com/embed/9dSxfcCxJTE?si=gJ_pCinKlGpv2Gr3"
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
     </main>
 
     <!-- Simple Footer -->
